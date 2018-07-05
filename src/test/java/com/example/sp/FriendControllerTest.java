@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -47,6 +49,12 @@ public class FriendControllerTest {
     @MockBean
     private SubscribeRepository subscribeRepository;
 
+    private RestDocumentationResultHandler docs(String name) {
+        return document(name,
+                preprocessRequest(prettyPrint()),
+                preprocessResponse(prettyPrint()));
+    }
+
     @Test
     public void createFriendConnection() throws Exception {
         given(friendRepository.findByUserAndFriend(anyString(), anyString()))
@@ -69,7 +77,7 @@ public class FriendControllerTest {
                 .andExpect(content().json("{\n" +
                         "  \"success\": true\n" +
                         "}"))
-                .andDo(document("create"));
+                .andDo(docs("create"));
     }
 
     @Test
@@ -91,7 +99,7 @@ public class FriendControllerTest {
                         "  ],\n" +
                         "  \"count\": 1\n" +
                         "}"))
-                .andDo(document("retrieve"));
+                .andDo(docs("list"));
     }
 
     @Test
@@ -116,7 +124,7 @@ public class FriendControllerTest {
                         "  ],\n" +
                         "  \"count\": 1\n" +
                         "}"))
-                .andDo(document("common"));
+                .andDo(docs("common"));
     }
 
     @Test
@@ -137,7 +145,7 @@ public class FriendControllerTest {
                 .andExpect(content().json("{\n" +
                         "  \"success\": true\n" +
                         "}"))
-                .andDo(document("subscribe"));
+                .andDo(docs("subscribe"));
     }
 
     @Test
@@ -157,7 +165,7 @@ public class FriendControllerTest {
                 .andExpect(content().json("{\n" +
                         "  \"success\": true\n" +
                         "}"))
-                .andDo(document("block"));
+                .andDo(docs("block"));
     }
 
     @Test
@@ -184,6 +192,6 @@ public class FriendControllerTest {
                         "    \"kate@example.com\"\n" +
                         "  ]\n" +
                         "}"))
-                .andDo(document("recipient"));
+                .andDo(docs("recipient"));
     }
 }

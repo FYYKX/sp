@@ -1,0 +1,46 @@
+= Friend API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[resources]]
+= Resources
+
+[[resources-create-connection]]
+== Create connection
+
+include::{snippets}/create/http-request.adoc[]
+include::{snippets}/create/http-response.adoc[]
+
+[[resources-get-friend-list]]
+== Retrieve friends list
+
+include::{snippets}/list/http-request.adoc[]
+include::{snippets}/list/http-response.adoc[]
+
+[[resources-retrieve-common-friends]]
+== Retrieve common friends
+
+include::{snippets}/common/http-request.adoc[]
+include::{snippets}/common/http-response.adoc[]
+
+[[resources-subscribe-updates]]
+== Subscribe to updates
+
+include::{snippets}/subscribe/http-request.adoc[]
+include::{snippets}/subscribe/http-response.adoc[]
+
+[[resources-block-updates]]
+== Block updates
+
+include::{snippets}/block/http-request.adoc[]
+include::{snippets}/block/http-response.adoc[]
+
+[[resources-retrieve-recipients]]
+== Retrieve recipients
+
+include::{snippets}/recipient/http-request.adoc[]
+include::{snippets}/recipient/http-response.adoc[]

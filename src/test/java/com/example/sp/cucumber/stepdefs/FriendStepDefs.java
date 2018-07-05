@@ -37,7 +37,7 @@ public class FriendStepDefs extends StepDefs {
     }
 
     @After
-    public void clearData() {
+    public void tearDown() {
         blockRepository.deleteAll();
         friendRepository.deleteAll();
         subscribeRepository.deleteAll();
