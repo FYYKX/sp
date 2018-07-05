@@ -1,6 +1,7 @@
 package com.example.sp;
 
 
+import com.example.sp.web.rest.util.StringUtils;
 import org.junit.Test;
 
 import java.util.List;
