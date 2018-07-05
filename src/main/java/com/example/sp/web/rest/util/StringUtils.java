@@ -1,4 +1,4 @@
-package com.example.sp;
+package com.example.sp.web.rest.util;
 
 import java.util.ArrayList;
 import java.util.List;

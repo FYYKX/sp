@@ -1,4 +1,4 @@
-package com.example.sp;
+package com.example.sp.web.rest.vm;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.sp;
+package com.example.sp.domain;
 
 import lombok.Data;
 

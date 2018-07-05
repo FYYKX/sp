@@ -1,5 +1,6 @@
-package com.example.sp;
+package com.example.sp.repository;
 
+import com.example.sp.domain.Block;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,7 @@ import java.util.Optional;
 public interface BlockRepository extends CrudRepository<Block, Long> {
     List<Block> findByTarget(String target);
 
-    Optional<Block> findByRequestorOrTarget(String requestor, String target);
+    List<Block> findByRequestorOrTarget(String requestor, String target);
+
+    Optional<Block> findByRequestorAndTarget(String requestor, String target);
 }
